@@ -18,10 +18,16 @@ namespace Attributes
 
             foreach (var type in types)
             {
-                Console.WriteLine(type.Name);
+                Console.WriteLine("type.Name: {0}",type.Name);
+
+                foreach (var propertie in type.GetProperties())
+                {
+                    Console.WriteLine("propertie.Name: {0} ", propertie.Name);
+                }
             }
-            AnotherClass anotherClass = new AnotherClass();
-            
+
+            Console.ReadLine();
+ 
 
         }
         //AttributeTargets sets the restriction of the Attributes... in this case it can only assigned to a class
