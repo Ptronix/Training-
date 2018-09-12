@@ -10,23 +10,33 @@ namespace Generics
     {
         static void Main(string[] args)
         {
-            var result = new Result <int,bool> { Success = true, Data = 6, Data2 = true};
-            var result1 = new Result<string, int> { Success = false, Data = "Six", Data2 = 45 };
+            var result = new Result <int> { Success = true, Data = 6};
+            var result1 = new Result<string> { Success = false, Data = "Six"};
 
             Console.WriteLine(result.Success);
-            Console.WriteLine(result1.Data2);
+            Console.WriteLine(result.Data);
 
             Console.ReadLine();
         }  
         
-        public class Result<T,U>
+        public class Result<T>
         {
             public bool Success { get; set; }
             public T Data { get; set; }
-            public U Data2 { get; set; }
+            
+        }
+
+        public class ResultPrinter
+        {
+            public void Print<T>(Result<T> result)
+            {
+                Console.WriteLine(result.Success);
+                Console.WriteLine(result.Data);
+            }
         }
     }
     //not a good practise 
+    //better to use generics
     
     //public class ResultInt
     //{
