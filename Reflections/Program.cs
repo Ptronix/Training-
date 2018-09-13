@@ -39,7 +39,7 @@ namespace Reflections
             Console.ReadLine();
         }
     }
-    public class anyClass
+    public class AnyClass
     {
         //that is a Field
         public int Age;
