@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Anonymous_Methods_and_Lambda_Expr
 {
     delegate void Operattion(int number);
+    
 
     class Program
     {
@@ -21,11 +22,14 @@ namespace Anonymous_Methods_and_Lambda_Expr
         //    Console.WriteLine("{0} x 3 = {1}", number, number * 3);
         //    Console.WriteLine("{0} x 4 = {1}", number, number * 4);
         //}
-
+        public string Teststring { get; set; }
 
         //BETTER  
         static void Main(string[] args)
         {
+            Program program = new Program();
+            
+
             Operattion op = delegate (int number)
             //These are anonymous methods because  No name
             {
@@ -33,10 +37,13 @@ namespace Anonymous_Methods_and_Lambda_Expr
                 Console.WriteLine("{0} x 3 = {1}", number, number * 3);
                 Console.WriteLine("{0} x 4 = {1}", number, number * 4);
 
+                // In delegate is access to variables and functions outside of delegate...
+                program.Teststring = "Create outside of Delegate";
+
             };
             // and call the delegate
             op(2);
-
+            Console.WriteLine(program.Teststring);
         }
 
     }
