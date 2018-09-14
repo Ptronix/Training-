@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegates", "Delegates\Dele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anonymous Methods and Lambda Expr", "Anonymous Methods and Lambda Expr\Anonymous Methods and Lambda Expr.csproj", "{97D23186-4CCE-490B-B66F-FFCB9EBD8F3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "Events\Events.csproj", "{20AC70B3-AF52-4EA1-98C5-EFAE6BF19F06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{97D23186-4CCE-490B-B66F-FFCB9EBD8F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97D23186-4CCE-490B-B66F-FFCB9EBD8F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97D23186-4CCE-490B-B66F-FFCB9EBD8F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AC70B3-AF52-4EA1-98C5-EFAE6BF19F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AC70B3-AF52-4EA1-98C5-EFAE6BF19F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AC70B3-AF52-4EA1-98C5-EFAE6BF19F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AC70B3-AF52-4EA1-98C5-EFAE6BF19F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
