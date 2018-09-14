@@ -11,32 +11,19 @@ namespace Anonymous_Methods_and_Lambda_Expr
 
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    Operattion op = Double;
-        //    op(4);
-        //}
-        //static void Double(int number)
-        //{
-        //    Console.WriteLine("{0} x 2 = {1}", number, number * 2);
-        //    Console.WriteLine("{0} x 3 = {1}", number, number * 3);
-        //    Console.WriteLine("{0} x 4 = {1}", number, number * 4);
-        //}
-        public string Teststring { get; set; }
-
-        //BETTER  
+       
         static void Main(string[] args)
-        {
-            Program program = new Program();
+        {   
+            //use action fpr methods without an return param
+            Action<int> op = number => { Console.WriteLine("Action: {0} x 2 = {1}", number, number * 2); };
+           
+            //use func for methods with returnn values
+            Func<int, int> Double = x => { return x * 2;};
 
-            // Lambda Expression
-            // input params in brackets if multiple params output params on right side
-            Operattion op =  number => { Console.WriteLine("{0} x 2 = {1}", number, number * 2);  };
-            //These are anonymous methods because  No name
+            Console.WriteLine("Func: " +Double(3));
 
+            op(3);
 
-            op(2);
         }
-
     }
 }
