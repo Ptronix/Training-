@@ -28,22 +28,14 @@ namespace Anonymous_Methods_and_Lambda_Expr
         static void Main(string[] args)
         {
             Program program = new Program();
-            
 
-            Operattion op = delegate (int number)
+            // Lambda Expression
+            // input params in brackets if multiple params output params on right side
+            Operattion op =  number => { Console.WriteLine("{0} x 2 = {1}", number, number * 2);  };
             //These are anonymous methods because  No name
-            {
-                Console.WriteLine("{0} x 2 = {1}", number, number * 2);
-                Console.WriteLine("{0} x 3 = {1}", number, number * 3);
-                Console.WriteLine("{0} x 4 = {1}", number, number * 4);
 
-                // In delegate is access to variables and functions outside of delegate...
-                program.Teststring = "Create outside of Delegate";
 
-            };
-            // and call the delegate
             op(2);
-            Console.WriteLine(program.Teststring);
         }
 
     }
