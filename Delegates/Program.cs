@@ -8,32 +8,35 @@ namespace Delegates
 {
     class Program
     {
-        delegate void MyDelegate(string name);
+        delegate void Operation(int number);
 
         static void Main(string[] args)
         {
-            // no need to instantiate the delegate method in c#
-            // MyDelegate dele = new MyDelegate(Greetings);
-            MyDelegate dele = GiveMeMyDelegate();
-             Test(dele);
-            //compiler knows that it should invoked
-            //dele.Invoke();
+            //initialized the delegate
+            Operation op = Double;
+            //past it into the Method
+            ExcecuteOperation(2, op);
 
-            GiveMeMyDelegate();
+            //change the delegator operation to Triple()
+            op = Triple;
+            ExcecuteOperation(5, op);
 
-            Console.ReadLine();
         }
-        static void Test (MyDelegate dele)
+        static void Double(int number)
         {
-            dele("Philipp");
+            Console.WriteLine("{0} x 2 = {1}", number, number * 2);
         }
 
-        static void Greetings(string name) { Console.WriteLine("Hey {0} how are you today?",name); }
-
-        static MyDelegate GiveMeMyDelegate()
+        static void Triple(int number)
         {
-            return new MyDelegate(Greetings);
+            Console.WriteLine("{0} x 3 = {1}",number,number*3);
         }
+
+        static void ExcecuteOperation(int number, Operation operation)
+        {
+            operation(number);
+        }
+
     }
 
 }
