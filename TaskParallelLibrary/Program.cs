@@ -14,14 +14,12 @@ namespace TaskParallelLibrary
             Console.ForegroundColor = ConsoleColor.Green;
             //create task
 
-            var t1 = new Task(() => DoSomeStuff(1, 1500) );
-            t1.Start();
-            var t2 = new Task(() => DoSomeStuff(2, 500));
-            t2.Start();
-            var t3 = new Task(() => DoSomeStuff(3, 2000));
-            t3.Start();
-           
-
+            var t1 = Task.Factory.StartNew(() => DoSomeStuff(1, 1500) );
+            
+            var t2 = Task.Factory.StartNew(() => DoSomeStuff(2, 500));
+            
+            var t3 = Task.Factory.StartNew(() => DoSomeStuff(3, 2000));
+            
             Console.WriteLine("Press any key to quit");
             Console.ReadKey();
         }
