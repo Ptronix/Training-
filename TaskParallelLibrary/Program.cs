@@ -11,17 +11,29 @@ namespace TaskParallelLibrary
     {
         static void Main(string[] args)
         {
-            var intList = new List<long> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 33, 5, 11, 66, 44, 75 };
+            var source = new CancellationTokenSource();
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Parallel.For(0, 9223372036854775807, (i) => Console.Write(i));
-            
+            try
+            {
+                var t1 = Task.Factory.StartNew(() => DoSomeStuff(1, 1000,source.Token )).ContinueWith((prevTask) => DoMoreStuff(1, 500,source.Token));
+                source.Cancel();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.GetType());               
+            }
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Press any key to quit");
             Console.ReadKey();
         }
-        static void DoSomeStuff(int id, int sleepTime)
+        static void DoSomeStuff(int id, int sleepTime,CancellationToken cancelToken )
         {
+            if (cancelToken.IsCancellationRequested)
+            {
+                Console.WriteLine("Cancel request!");
+                cancelToken.ThrowIfCancellationRequested();
+            }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("task: {0} is beginning ",id);
             Thread.Sleep(sleepTime);
@@ -29,8 +41,13 @@ namespace TaskParallelLibrary
             Console.WriteLine("task {0} has completed ", id);
         }
 
-        static void DoMoreStuff(int id, int sleepTime)
+        static void DoMoreStuff(int id, int sleepTime, CancellationToken cancelToken)
         {
+            if (cancelToken.IsCancellationRequested)
+            {
+                Console.WriteLine("Cancel request!");
+                cancelToken.ThrowIfCancellationRequested();
+            }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("task: {0} is beginning more stuff ", id);
             Thread.Sleep(sleepTime);
